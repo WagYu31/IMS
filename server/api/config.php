@@ -4,10 +4,10 @@
 // EDIT bagian ini dengan kredensial cPanel kamu!
 // ============================================================
 
-define('DB_HOST', 'localhost');       // biasanya 'localhost'
-define('DB_NAME', 'pitiagic_ims');   // nama database kamu di cPanel
-define('DB_USER', 'pitiagic_ims');   // username database
-define('DB_PASS', 'PASSWORD_KAMU');  // password database
+define('DB_HOST', 'arzano-db.id.rapidplex.com'); // host DB DomaiNesia
+define('DB_NAME', 'pitiagic_ims');
+define('DB_USER', 'pitiagic_ims');
+define('DB_PASS', 'IMS@WWog6wkvYiYEtOdR#2024');
 
 try {
     $pdo = new PDO(
