@@ -10,7 +10,7 @@ const TABS = [
   { id: 'kalkulator', emoji: '🧮', label: 'Kalkulator Angsuran', sub: 'Soal 1' },
   { id: 'jatuh-tempo', emoji: '📅', label: 'Jatuh Tempo',        sub: 'Soal 2' },
   { id: 'denda',      emoji: '⚠️', label: 'Denda Keterlambatan', sub: 'Soal 3' },
-  { id: 'panduan',   emoji: '📖', label: 'Panduan',              sub: 'Guide'  },
+  { id: 'panduan',   emoji: '🤖', label: 'Chat Bot',  sub: 'Guide'  },
 ];
 
 export default function App() {
