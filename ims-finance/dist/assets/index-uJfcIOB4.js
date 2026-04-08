@@ -40,137 +40,106 @@ WHERE
   AND ja.TANGGAL_JATUH_TEMPO < '${r}'
   AND ja.ANGSURAN_KE > ${a}
   AND p.ID IS NULL
-ORDER BY ja.ANGSURAN_KE;`})]}),d&&(0,C.jsxs)(`div`,{className:`card fade-in`,children:[(0,C.jsx)(`div`,{className:`section-heading`,children:`📊 Hasil Query — Detail Denda`}),(0,C.jsx)(`p`,{className:`section-sub`,children:`Output sesuai format soal`}),l.length===0?(0,C.jsx)(`div`,{className:`alert alert-success`,children:`✅ Tidak ada keterlambatan. Semua angsuran yang jatuh tempo sudah dibayar.`}):(0,C.jsx)(`div`,{className:`table-wrapper`,children:(0,C.jsxs)(`table`,{children:[(0,C.jsx)(`thead`,{children:(0,C.jsxs)(`tr`,{children:[(0,C.jsx)(`th`,{children:`KONTRAK`}),(0,C.jsx)(`th`,{children:`CLIENT`}),(0,C.jsx)(`th`,{children:`KE`}),(0,C.jsx)(`th`,{children:`ANGSURAN`}),(0,C.jsx)(`th`,{children:`JT`}),(0,C.jsx)(`th`,{children:`HARI`}),(0,C.jsx)(`th`,{children:`DENDA`})]})}),(0,C.jsx)(`tbody`,{children:l.map((e,t)=>(0,C.jsxs)(`tr`,{children:[(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`badge badge-blue`,children:e.kontrak_no})}),(0,C.jsx)(`td`,{children:e.client_name}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`ke-chip-red`,children:e.installment_no})}),(0,C.jsx)(`td`,{style:{color:`var(--text-secondary)`},children:y(e.angsuran_per_bulan)}),(0,C.jsx)(`td`,{className:`td-mono`,children:b(e.tanggal_jatuh_tempo)}),(0,C.jsx)(`td`,{children:(0,C.jsxs)(`div`,{className:`hari-cell`,children:[(0,C.jsx)(`span`,{className:`hari-num`,children:e.hari_keterlambatan}),(0,C.jsx)(`span`,{className:`hari-txt`,children:`hr`})]})}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`td-denda`,children:y(e.total_denda)})})]},t))}),(0,C.jsx)(`tfoot`,{children:(0,C.jsxs)(`tr`,{className:`denda-total-row`,children:[(0,C.jsx)(`td`,{colSpan:5,style:{color:`var(--text-muted)`,fontWeight:600},children:`TOTAL`}),(0,C.jsx)(`td`,{children:(0,C.jsxs)(`strong`,{style:{color:`var(--color-amber-300)`},children:[x,` hr`]})}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`td-denda-total`,children:y(v)})})]})})]})})]})]}),(0,C.jsx)(`div`,{className:`denda-right`,children:d&&l.length>0?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--red`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`🔴`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Angsuran Terlambat`}),(0,C.jsxs)(`div`,{className:`dsb-value`,children:[l.length,` Angsuran`]}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Angsuran ke-`,e.installment_no]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--amber`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`⏱️`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Total Hari Terlambat`}),(0,C.jsxs)(`div`,{className:`dsb-value`,children:[x,` Hari`]}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Ke-`,e.installment_no,`: `,e.hari_keterlambatan,` hari`]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--danger`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`💸`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Total Denda`}),(0,C.jsx)(`div`,{className:`dsb-value--big`,children:y(v)}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Ke-`,e.installment_no,`: `,y(e.total_denda)]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`card`,children:[(0,C.jsx)(`div`,{className:`section-heading`,children:`🧮 Perhitungan`}),(0,C.jsx)(`p`,{className:`section-sub`,style:{marginBottom:`var(--space-3)`},children:`Verifikasi manual per angsuran`}),(0,C.jsx)(`div`,{className:`kalkulasi-list`,children:l.map(e=>(0,C.jsxs)(`div`,{className:`kalkulasi-card`,children:[(0,C.jsxs)(`div`,{className:`kalkulasi-title`,children:[`Ke-`,e.installment_no,` · `,b(e.tanggal_jatuh_tempo)]}),(0,C.jsxs)(`div`,{className:`kalkulasi-formula`,children:[(0,C.jsx)(`span`,{className:`f-operand`,children:y(e.angsuran_per_bulan)}),(0,C.jsx)(`span`,{className:`f-operator`,children:`×`}),(0,C.jsxs)(`span`,{className:`f-operand`,children:[s,`%`]}),(0,C.jsx)(`span`,{className:`f-operator`,children:`×`}),(0,C.jsxs)(`span`,{className:`f-operand`,children:[e.hari_keterlambatan,`h`]}),(0,C.jsx)(`span`,{className:`f-operator`,children:`=`}),(0,C.jsx)(`span`,{className:`f-result`,children:y(e.total_denda)})]})]},e.installment_no))})]})]}):(0,C.jsxs)(`div`,{className:`card hint-card`,children:[(0,C.jsx)(`div`,{className:`hint-icon`,children:`⚠️`}),(0,C.jsx)(`div`,{className:`section-heading`,style:{marginBottom:`var(--space-3)`},children:`Cara Pakai`}),(0,C.jsxs)(`ol`,{className:`hint-list`,children:[(0,C.jsx)(`li`,{children:`Pilih kontrak dari dropdown`}),(0,C.jsx)(`li`,{children:`Set angsuran terakhir yang sudah dibayar`}),(0,C.jsx)(`li`,{children:`Set persentase denda per hari`}),(0,C.jsx)(`li`,{children:`Pilih tanggal perhitungan`}),(0,C.jsxs)(`li`,{children:[`Klik `,(0,C.jsx)(`strong`,{children:`Hitung Denda`})]})]})]})})]})]})}var E=[{keys:[`halo`,`hai`,`hei`,`hello`,`hi`,`selamat`,`pagi`,`siang`,`malam`,`assalamualaikum`,`ass`],reply:`👋 Halo! Saya **IMS Bot**, asisten virtual untuk sistem kredit kendaraan IMS Finance.
+ORDER BY ja.ANGSURAN_KE;`})]}),d&&(0,C.jsxs)(`div`,{className:`card fade-in`,children:[(0,C.jsx)(`div`,{className:`section-heading`,children:`📊 Hasil Query — Detail Denda`}),(0,C.jsx)(`p`,{className:`section-sub`,children:`Output sesuai format soal`}),l.length===0?(0,C.jsx)(`div`,{className:`alert alert-success`,children:`✅ Tidak ada keterlambatan. Semua angsuran yang jatuh tempo sudah dibayar.`}):(0,C.jsx)(`div`,{className:`table-wrapper`,children:(0,C.jsxs)(`table`,{children:[(0,C.jsx)(`thead`,{children:(0,C.jsxs)(`tr`,{children:[(0,C.jsx)(`th`,{children:`KONTRAK`}),(0,C.jsx)(`th`,{children:`CLIENT`}),(0,C.jsx)(`th`,{children:`KE`}),(0,C.jsx)(`th`,{children:`ANGSURAN`}),(0,C.jsx)(`th`,{children:`JT`}),(0,C.jsx)(`th`,{children:`HARI`}),(0,C.jsx)(`th`,{children:`DENDA`})]})}),(0,C.jsx)(`tbody`,{children:l.map((e,t)=>(0,C.jsxs)(`tr`,{children:[(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`badge badge-blue`,children:e.kontrak_no})}),(0,C.jsx)(`td`,{children:e.client_name}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`ke-chip-red`,children:e.installment_no})}),(0,C.jsx)(`td`,{style:{color:`var(--text-secondary)`},children:y(e.angsuran_per_bulan)}),(0,C.jsx)(`td`,{className:`td-mono`,children:b(e.tanggal_jatuh_tempo)}),(0,C.jsx)(`td`,{children:(0,C.jsxs)(`div`,{className:`hari-cell`,children:[(0,C.jsx)(`span`,{className:`hari-num`,children:e.hari_keterlambatan}),(0,C.jsx)(`span`,{className:`hari-txt`,children:`hr`})]})}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`td-denda`,children:y(e.total_denda)})})]},t))}),(0,C.jsx)(`tfoot`,{children:(0,C.jsxs)(`tr`,{className:`denda-total-row`,children:[(0,C.jsx)(`td`,{colSpan:5,style:{color:`var(--text-muted)`,fontWeight:600},children:`TOTAL`}),(0,C.jsx)(`td`,{children:(0,C.jsxs)(`strong`,{style:{color:`var(--color-amber-300)`},children:[x,` hr`]})}),(0,C.jsx)(`td`,{children:(0,C.jsx)(`span`,{className:`td-denda-total`,children:y(v)})})]})})]})})]})]}),(0,C.jsx)(`div`,{className:`denda-right`,children:d&&l.length>0?(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--red`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`🔴`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Angsuran Terlambat`}),(0,C.jsxs)(`div`,{className:`dsb-value`,children:[l.length,` Angsuran`]}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Angsuran ke-`,e.installment_no]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--amber`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`⏱️`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Total Hari Terlambat`}),(0,C.jsxs)(`div`,{className:`dsb-value`,children:[x,` Hari`]}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Ke-`,e.installment_no,`: `,e.hari_keterlambatan,` hari`]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`denda-stat-box denda-stat-box--danger`,children:[(0,C.jsx)(`div`,{className:`dsb-icon`,children:`💸`}),(0,C.jsx)(`div`,{className:`dsb-label`,children:`Total Denda`}),(0,C.jsx)(`div`,{className:`dsb-value--big`,children:y(v)}),l.map(e=>(0,C.jsxs)(`div`,{className:`dsb-sub`,children:[`Ke-`,e.installment_no,`: `,y(e.total_denda)]},e.installment_no))]}),(0,C.jsxs)(`div`,{className:`card`,children:[(0,C.jsx)(`div`,{className:`section-heading`,children:`🧮 Perhitungan`}),(0,C.jsx)(`p`,{className:`section-sub`,style:{marginBottom:`var(--space-3)`},children:`Verifikasi manual per angsuran`}),(0,C.jsx)(`div`,{className:`kalkulasi-list`,children:l.map(e=>(0,C.jsxs)(`div`,{className:`kalkulasi-card`,children:[(0,C.jsxs)(`div`,{className:`kalkulasi-title`,children:[`Ke-`,e.installment_no,` · `,b(e.tanggal_jatuh_tempo)]}),(0,C.jsxs)(`div`,{className:`kalkulasi-formula`,children:[(0,C.jsx)(`span`,{className:`f-operand`,children:y(e.angsuran_per_bulan)}),(0,C.jsx)(`span`,{className:`f-operator`,children:`×`}),(0,C.jsxs)(`span`,{className:`f-operand`,children:[s,`%`]}),(0,C.jsx)(`span`,{className:`f-operator`,children:`×`}),(0,C.jsxs)(`span`,{className:`f-operand`,children:[e.hari_keterlambatan,`h`]}),(0,C.jsx)(`span`,{className:`f-operator`,children:`=`}),(0,C.jsx)(`span`,{className:`f-result`,children:y(e.total_denda)})]})]},e.installment_no))})]})]}):(0,C.jsxs)(`div`,{className:`card hint-card`,children:[(0,C.jsx)(`div`,{className:`hint-icon`,children:`⚠️`}),(0,C.jsx)(`div`,{className:`section-heading`,style:{marginBottom:`var(--space-3)`},children:`Cara Pakai`}),(0,C.jsxs)(`ol`,{className:`hint-list`,children:[(0,C.jsx)(`li`,{children:`Pilih kontrak dari dropdown`}),(0,C.jsx)(`li`,{children:`Set angsuran terakhir yang sudah dibayar`}),(0,C.jsx)(`li`,{children:`Set persentase denda per hari`}),(0,C.jsx)(`li`,{children:`Pilih tanggal perhitungan`}),(0,C.jsxs)(`li`,{children:[`Klik `,(0,C.jsx)(`strong`,{children:`Hitung Denda`})]})]})]})})]})]})}var E=[{keys:[`halo`,`hai`,`hei`,`hello`,`hi`,`selamat`,`pagi`,`siang`,`malam`,`assalamualaikum`,`ass`],reply:`👋 Halo! Saya **IMS Bot**.
 
 Saya bisa membantu kamu memahami:
-• 🧮 Soal 1 — Kalkulator Angsuran
-• 📅 Soal 2 — Jatuh Tempo
-• ⚠️ Soal 3 — Denda Keterlambatan
+• 🧮 **Soal 1** — Kalkulator Angsuran
+• 📅 **Soal 2** — Jatuh Tempo
+• ⚠️ **Soal 3** — Denda Keterlambatan
 
-Mau tanya apa?`},{keys:[`soal 1`,`kalkulator`,`angsuran`,`cicilan`,`kredit`,`hitung`],reply:`🧮 **Soal 1 — Kalkulator Angsuran Kredit**
+Mau tanya apa?`},{keys:[`soal 1`,`kalkulator`,`angsuran`,`cicilan`,`kredit`,`hitung angsuran`],reply:`🧮 **Soal 1 — Kalkulator Angsuran**
 
-Cara pakai:
-1. Isi data kontrak (nomor, nama, OTR, DP, tenor, bunga, tgl pertama)
+Langkah:
+1. Isi form: nomor kontrak, nama, OTR, DP, tenor, bunga, tgl pertama
 2. Klik **"Hitung Angsuran"**
 3. Klik **"Simpan Kontrak"**
 
 **Rumus Flat Rate:**
-• DP = OTR × % DP
 • Pokok = OTR − DP
-• Total Bunga = Pokok × Bunga/Thn × (Tenor ÷ 12)
-• Angsuran/Bulan = (Pokok + Total Bunga) ÷ Tenor
+• Total Bunga = Pokok × Bunga/Thn × (Tenor÷12)
+• Angsuran/Bln = (Pokok + Bunga) ÷ Tenor`},{keys:[`rumus`,`formula`,`perhitungan`,`flat rate`],reply:`📐 **Rumus Flat Rate:**
 
-Contoh Pak Sugus: OTR Rp240jt, DP 20%, Tenor 18 bln, Bunga 14% → **Rp 12.907.000/bln**`},{keys:[`rumus`,`formula`,`perhitungan`,`hitung flat`,`flat rate`],reply:`📐 **Rumus Flat Rate:**
+\`DP = OTR × % DP\`
+\`Pokok = OTR − DP\`
+\`Bunga = Pokok × Rate/Thn × (Tenor÷12)\`
+\`Angsuran = (Pokok + Bunga) ÷ Tenor\`
 
-\`\`\`
-DP            = OTR × % DP
-Pokok         = OTR − DP
-Total Bunga   = Pokok × Bunga/Thn × (Tenor÷12)
-Total Bayar   = Pokok + Total Bunga
-Angsuran/Bln  = Total Bayar ÷ Tenor
-\`\`\`
+**Contoh Pak Sugus:**
+• OTR: Rp 240jt, DP 20%
+• Pokok: Rp 192jt
+• Bunga: Rp 40,32jt
+• **Angsuran: Rp 12.907.000/bln**`},{keys:[`sugus`,`agr00001`,`pak sugus`,`contoh data`],reply:`👤 **Data AGR00001 — Pak Sugus**
 
-**Contoh angka:**
 • OTR: Rp 240.000.000
 • DP 20%: Rp 48.000.000
 • Pokok: Rp 192.000.000
-• Bunga 14% × 1.5 thn: Rp 40.320.000
-• **Angsuran: Rp 12.907.000/bln**`},{keys:[`sugus`,`agr00001`,`pak sugus`,`contoh`,`data`],reply:`👤 **Data Kontrak Pak Sugus (AGR00001)**
+• Bunga 14%/thn × 1,5: Rp 40.320.000
+• **Angsuran: Rp 12.907.000/bln**
+• Tenor: 18 bulan
+• Mulai: 25 Jan 2024`},{keys:[`soal 2`,`jatuh tempo`,`per tanggal`,`query jatuh`],reply:`📅 **Soal 2 — Jatuh Tempo**
 
-| Field | Nilai |
-|---|---|
-| OTR | Rp 240.000.000 |
-| Down Payment 20% | Rp 48.000.000 |
-| Pokok Pinjaman | Rp 192.000.000 |
-| Total Bunga 14%/thn | Rp 40.320.000 |
-| Total Bayar | Rp 232.320.000 |
-| **Angsuran/Bulan** | **Rp 12.907.000** |
-| Tenor | 18 bulan |
-| Tgl Mulai | 25 Jan 2024 |`},{keys:[`soal 2`,`jatuh tempo`,`jt`,`keterlambatan jatuh`,`per tanggal`,`query`],reply:`📅 **Soal 2 — Jatuh Tempo**
-
-Cara pakai:
+Langkah:
 1. Pilih kontrak dari dropdown
-2. Tentukan **tanggal batas** pengecekan
+2. Tentukan **tanggal batas**
 3. Klik **"Jalankan Query"**
 
-**Logika:** Tampilkan cicilan yang \`TANGGAL_JATUH_TEMPO ≤ [tanggal input]\`
+Logika: tampil cicilan dengan \`JatuhTempo ≤ tanggal input\`
 
-**Contoh:** Per 14 Agustus 2024:
-• Cicilan 1–7 (25 Jan–25 Jul) ✅ sudah lewat
-• Cicilan 8 (25 Agu) ❌ belum — tanggal 25 > 14
+**Contoh per 14 Agu 2024:**
+Cicilan 25 Jan–25 Jul ✅ sudah lewat
+Cicilan 25 Agu ❌ belum (25 > 14)
+→ 7 angsuran = **Rp 90.349.000**`},{keys:[`kenapa 25`,`tanggal 25`,`kok 25`,`knp 25`],reply:`💡 **Kenapa tanggal 25?**
 
-➟ Total = 7 × Rp 12.907.000 = **Rp 90.349.000**`},{keys:[`kenapa 25`,`kenapa tanggal 25`,`knp 25`,`kok 25`,`tanggal 25`],reply:`💡 Karena tanggal **Angsuran Pertama diisi 25 Januari 2024**, maka semua cicilan jatuh tempo di tanggal **25** setiap bulan.
+Karena **Angsuran Pertama** diisi 25 Jan 2024, maka semua cicilan jatuh di tanggal 25 setiap bulan.
 
-Tanggal **14 Agustus** hanya sebagai *filter cutoff* — kita tanya:
-> "Cicilan mana yang jatuh temponya ≤ 14 Agustus?"
+Tanggal **14 Agustus** adalah *filter cutoff* — kita tanya:
+> "Cicilan mana yang jatuh temponya ≤ 14 Agu?"
 
-Jawab: cicilan 25-Jan s/d 25-Jul (7 bulan). Cicilan 25-Agu belum jatuh tempo karena 25 > 14. ✅`},{keys:[`soal 3`,`denda`,`keterlambatan`,`terlambat`,`denda bayar`],reply:`⚠️ **Soal 3 — Denda Keterlambatan**
+Jawabnya: Jan–Jul (7 bulan). Cicilan 25 Agu belum jatuh tempo karena 25 > 14. ✅`},{keys:[`soal 3`,`denda`,`keterlambatan`,`terlambat`],reply:`⚠️ **Soal 3 — Denda Keterlambatan**
 
-Cara pakai:
-1. Pilih kontrak dari dropdown
-2. Masukkan **tanggal pembayaran aktual** (kapan benar-benar dibayar)
-3. Sistem hitung otomatis berapa hari terlambat & total denda
+Langkah:
+1. Pilih kontrak
+2. Masukkan tanggal **pembayaran aktual**
+3. Lihat hasil denda otomatis
 
 **Rumus:**
-\`\`\`
-Keterlambatan = Tgl Bayar − Tgl Jatuh Tempo (hari)
-Denda/Hari    = Angsuran × 0.1%
-Total Denda   = Keterlambatan × Denda/Hari
-\`\`\``},{keys:[`simpan`,`save`,`kontrak baru`,`tambah kontrak`],reply:`💾 **Cara Simpan Kontrak:**
+\`Telat = Tgl Bayar − Tgl JT (hari)\`
+\`Denda/Hari = Angsuran × 0.1%\`
+\`Total Denda = Telat × Denda/Hari\``},{keys:[`simpan`,`save`,`tambah kontrak`,`kontrak baru`],reply:`💾 **Cara Simpan Kontrak:**
 
-1. Isi semua field di form kiri
-2. Klik **"Hitung Angsuran"** — preview akan muncul
+1. Isi form di halaman Kalkulator
+2. Klik **"Hitung Angsuran"**
 3. Klik **"Simpan Kontrak"** (tombol hijau)
 
-Kontrak otomatis tersimpan dan bisa digunakan di tab **Jatuh Tempo** & **Denda**.
+Data tersimpan di database — tidak hilang saat refresh atau ganti browser! 🗄️`},{keys:[`hapus`,`delete kontrak`],reply:`🗑️ Di panel kanan "Daftar Kontrak", klik ikon **🗑️** pada kontrak yang ingin dihapus.
 
-> Data tersimpan di database — tidak hilang meski browser ditutup! 🗄️`},{keys:[`edit`,`ubah`,`update kontrak`],reply:`✏️ **Cara Edit Kontrak:**
+Kontrak akan dihapus permanen dari database.`},{keys:[`refresh`,`hilang`,`database`,`beda browser`,`hp lain`],reply:`🗄️ **Data tersimpan di MySQL** di server DomaiNesia.
 
-Di panel kanan "Daftar Kontrak", klik ikon ✏️ pada kontrak yang ingin diubah.
-
-Form akan terisi otomatis dengan data lama. Edit, hitung ulang, lalu klik **"Update Kontrak"**.`},{keys:[`hapus`,`delete`,`buang kontrak`],reply:`🗑️ **Cara Hapus Kontrak:**
-
-Di panel kanan "Daftar Kontrak", klik ikon 🗑️ pada kontrak yang ingin dihapus.
-
-Kontrak akan dihapus permanen dari database.`},{keys:[`dp`,`down payment`,`uang muka`],reply:`💰 **Down Payment (DP)**
-
-DP adalah uang muka yang dibayar di awal sebelum cicilan dimulai.
-
-**Rumus:** \`DP = OTR × % DP\`
-
-Contoh: OTR Rp 240jt, DP 20%
-→ \`240.000.000 × 20% = Rp 48.000.000\`
-
-Semakin besar DP → pokok pinjaman makin kecil → angsuran lebih ringan.`},{keys:[`tenor`,`lama`,`berapa bulan`],reply:`📆 **Tenor** adalah jangka waktu cicilan dalam **bulan**.
-
-Contoh: Tenor 18 bulan = cicilan selama 1,5 tahun.
-
-Semakin panjang tenor → cicilan per bulan lebih kecil, tapi total bunga lebih besar.`},{keys:[`bunga`,`interest`,`rate`],reply:`📊 **Bunga Flat Rate**
-
-Bunga dihitung dari **pokok pinjaman awal** (bukan saldo berkurang), sehingga angsuran setiap bulan **sama besar**.
-
-Rumus: \`Total Bunga = Pokok × Bunga/Thn × (Tenor ÷ 12)\`
-
-Contoh: Pokok 192jt × 14% × 1,5 thn = **Rp 40.320.000**`},{keys:[`refresh`,`hilang`,`data hilang`,`database`,`server`],reply:`🗄️ **Data Tersimpan di Database (MySQL)**
-
-Data kontrak tersimpan di server \`pitiagic_ims\` di DomaiNesia, sehingga:
 ✅ Tidak hilang saat refresh
 ✅ Bisa diakses dari browser berbeda
 ✅ Bisa diakses dari HP manapun
 
-Buka \`alumni590.com\` dari perangkat apapun — data tetap ada!`},{keys:[`terima kasih`,`makasih`,`thanks`,`thank you`,`oke`,`siap`,`mantap`,`bagus`],reply:`😊 Sama-sama! Senang bisa membantu.
+Buka \`alumni590.com\` dari perangkat apapun!`},{keys:[`dp`,`down payment`,`uang muka`],reply:`💰 **Down Payment (DP)**
 
-Jika ada pertanyaan lain seputar IMS Finance, jangan ragu untuk bertanya ya! 🚀`}],de=[`Cara pakai Soal 1`,`Rumus angsuran`,`Data Pak Sugus`,`Soal 2 jatuh tempo`,`Kenapa tanggal 25?`,`Cara hitung denda`];function fe(){return new Date().toLocaleTimeString(`id-ID`,{hour:`2-digit`,minute:`2-digit`})}function pe(e){let t=e.toLowerCase();for(let e of E)if(e.keys.some(e=>t.includes(e)))return e.reply;return`🤔 Maaf, saya belum punya jawaban untuk itu.
+Uang muka yang dibayar di awal.
+
+\`DP = OTR × % DP\`
+
+Contoh: OTR 240jt, DP 20%
+→ \`240.000.000 × 20% = Rp 48.000.000\`
+
+Semakin besar DP → pokok lebih kecil → cicilan lebih ringan.`},{keys:[`bunga`,`interest`,`rate`,`persen`],reply:`📊 **Bunga Flat Rate** dihitung dari pokok pinjaman awal, sehingga angsuran setiap bulan **sama besar**.
+
+\`Bunga = Pokok × Rate/Thn × (Tenor÷12)\`
+
+Contoh: 192jt × 14% × 1,5 = **Rp 40.320.000**`},{keys:[`terima kasih`,`makasih`,`thanks`,`mantap`,`bagus`,`oke siap`],reply:`😊 Sama-sama! Kalau ada pertanyaan lain, saya siap bantu ya! 🚀`}],de=[`🧮 Soal 1`,`📅 Soal 2`,`⚠️ Soal 3`,`Rumus angsuran`,`Data Pak Sugus`,`Kenapa tanggal 25?`];function fe(){return new Date().toLocaleTimeString(`id-ID`,{hour:`2-digit`,minute:`2-digit`})}function pe(e){let t=e.toLowerCase();for(let e of E)if(e.keys.some(e=>t.includes(e)))return e.reply;return`🤔 Maaf, saya belum punya jawaban untuk itu.
 
 Coba tanya tentang:
-• **Soal 1** — Kalkulator Angsuran
-• **Soal 2** — Jatuh Tempo
-• **Soal 3** — Denda Keterlambatan
+• **Soal 1/2/3**
 • **Rumus** perhitungan
-• **Data** Pak Sugus`}function me(e){return e.split(`
+• **Data** Pak Sugus
+• **Cara** simpan/hapus kontrak`}function me(e){return e.split(`
 `).map((t,n)=>(0,C.jsxs)(`span`,{children:[t.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).map((e,t)=>e.startsWith(`**`)&&e.endsWith(`**`)?(0,C.jsx)(`strong`,{children:e.slice(2,-2)},t):e.startsWith("`")&&e.endsWith("`")?(0,C.jsx)(`code`,{children:e.slice(1,-1)},t):e),n<e.split(`
-`).length-1&&(0,C.jsx)(`br`,{})]},n))}function D(){let[e,t]=(0,_.useState)([{id:1,from:`bot`,text:`👋 Halo! Saya **IMS Bot**.
+`).length-1&&(0,C.jsx)(`br`,{})]},n))}function D(){let[e,t]=(0,_.useState)(!1),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)([{id:1,from:`bot`,text:`👋 Halo! Saya **IMS Bot**.
 
-Saya siap membantu kamu memahami sistem kredit kendaraan IMS Finance.
-
-Mau tanya apa? 😊`,time:fe()}]),[n,r]=(0,_.useState)(``),[i,a]=(0,_.useState)(!1),o=(0,_.useRef)(null),s=(0,_.useRef)(null);(0,_.useEffect)(()=>{o.current?.scrollIntoView({behavior:`smooth`})},[e,i]);let c=e=>{let n=e.trim();if(!n)return;let i={id:Date.now(),from:`user`,text:n,time:fe()};t(e=>[...e,i]),r(``),a(!0),setTimeout(()=>{let e={id:Date.now()+1,from:`bot`,text:pe(n),time:fe()};t(t=>[...t,e]),a(!1)},700+Math.random()*400)};return(0,C.jsxs)(`div`,{className:`chat-page fade-in`,children:[(0,C.jsxs)(`div`,{className:`chat-header`,children:[(0,C.jsx)(`div`,{className:`chat-avatar`,children:`🤖`}),(0,C.jsxs)(`div`,{className:`chat-header-info`,children:[(0,C.jsx)(`div`,{className:`chat-header-name`,children:`IMS Bot`}),(0,C.jsxs)(`div`,{className:`chat-header-status`,children:[(0,C.jsx)(`span`,{className:`chat-status-dot`}),`Online — siap membantu`]})]})]}),(0,C.jsxs)(`div`,{className:`chat-messages`,children:[e.map(e=>(0,C.jsxs)(`div`,{className:`chat-msg chat-msg--${e.from}`,children:[e.from===`bot`&&(0,C.jsx)(`div`,{className:`chat-msg-icon`,children:`🤖`}),(0,C.jsxs)(`div`,{children:[(0,C.jsx)(`div`,{className:`chat-bubble chat-bubble--${e.from}`,children:me(e.text)}),(0,C.jsx)(`div`,{className:`chat-time`,children:e.time})]})]},e.id)),i&&(0,C.jsxs)(`div`,{className:`chat-msg chat-msg--bot`,children:[(0,C.jsx)(`div`,{className:`chat-msg-icon`,children:`🤖`}),(0,C.jsx)(`div`,{className:`chat-bubble chat-bubble--bot`,children:(0,C.jsxs)(`div`,{className:`chat-typing`,children:[(0,C.jsx)(`span`,{}),(0,C.jsx)(`span`,{}),(0,C.jsx)(`span`,{})]})})]}),(0,C.jsx)(`div`,{ref:o})]}),(0,C.jsx)(`div`,{className:`chat-chips`,children:de.map(e=>(0,C.jsx)(`button`,{className:`chat-chip`,onClick:()=>c(e),children:e},e))}),(0,C.jsxs)(`div`,{className:`chat-input-row`,children:[(0,C.jsx)(`input`,{ref:s,className:`chat-input`,value:n,onChange:e=>r(e.target.value),onKeyDown:e=>{e.key===`Enter`&&!e.shiftKey&&(e.preventDefault(),c(n))},placeholder:`Ketik pertanyaan kamu...`,disabled:i}),(0,C.jsx)(`button`,{className:`chat-send`,onClick:()=>c(n),disabled:!n.trim()||i,"aria-label":`Kirim`,children:`➤`})]})]})}var O=`/api/contracts.php`,he=window.location.hostname===`localhost`||window.location.hostname===`127.0.0.1`,ge=`ims-contracts`;function _e(){try{return JSON.parse(localStorage.getItem(ge))??[]}catch{return[]}}function ve(e){localStorage.setItem(ge,JSON.stringify(e))}var ye={async getAll(){if(he)return _e();let e=await fetch(O);if(!e.ok)throw Error(`Gagal memuat data`);return e.json()},async save(e){if(he){let t=_e(),n=t.findIndex(t=>t.kontrakNo===e.kontrakNo);return n>=0?t[n]=e:t.push(e),ve(t),{success:!0}}let t=await fetch(O,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify(e)});if(!t.ok)throw Error(`Gagal menyimpan kontrak`);return t.json()},async delete(e){if(he)return ve(_e().filter(t=>t.kontrakNo!==e)),{success:!0};let t=await fetch(`${O}?id=${encodeURIComponent(e)}`,{method:`DELETE`});if(!t.ok)throw Error(`Gagal menghapus kontrak`);return t.json()}},be=[{id:`kalkulator`,emoji:`🧮`,label:`Kalkulator Angsuran`,sub:`Soal 1`},{id:`jatuh-tempo`,emoji:`📅`,label:`Jatuh Tempo`,sub:`Soal 2`},{id:`denda`,emoji:`⚠️`,label:`Denda Keterlambatan`,sub:`Soal 3`},{id:`panduan`,emoji:`🤖`,label:`Chat Bot`,sub:`Guide`}];function xe(){let[e,t]=(0,_.useState)(`kalkulator`),[n,r]=(0,_.useState)([]),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(!0),[c,l]=(0,_.useState)(null);(0,_.useEffect)(()=>{ye.getAll().then(e=>{r(e),s(!1)}).catch(()=>{s(!1)})},[]);let u=(0,_.useCallback)((e,t=`success`)=>{l({msg:e,type:t}),setTimeout(()=>l(null),3e3)},[]),d=(0,_.useCallback)(async e=>{try{await ye.save(e),r(t=>{let n=t.findIndex(t=>t.kontrakNo===e.kontrakNo);if(n>=0){let r=[...t];return r[n]=e,a(n),r}return a(t.length),[...t,e]}),u(`✅ Kontrak berhasil disimpan!`)}catch{u(`❌ Gagal menyimpan kontrak`,`error`)}},[u]),f=(0,_.useCallback)(async e=>{let t=n[e]?.kontrakNo;try{await ye.delete(t),r(t=>{let n=t.filter((t,n)=>n!==e);return a(n.length>0?0:null),n}),u(`🗑️ Kontrak dihapus`)}catch{u(`❌ Gagal menghapus kontrak`,`error`)}},[n,u]);return(0,C.jsxs)(`div`,{className:`app`,children:[c&&(0,C.jsx)(`div`,{className:`app-toast ${c.type===`error`?`app-toast--error`:``}`,children:c.msg}),(0,C.jsxs)(`nav`,{className:`navbar`,role:`navigation`,"aria-label":`Navigasi utama`,children:[(0,C.jsxs)(`div`,{className:`navbar-brand`,children:[(0,C.jsx)(`img`,{src:`/ims-logo.png`,alt:`IMS Finance Logo`,className:`brand-logo-img`}),(0,C.jsx)(`div`,{className:`brand-tag`,children:`Sistem Kredit Kendaraan`})]}),(0,C.jsx)(`div`,{className:`navbar-tabs`,role:`tablist`,children:(0,C.jsx)(`div`,{className:`tabs-inner`,children:be.map(n=>(0,C.jsxs)(`button`,{role:`tab`,"aria-selected":e===n.id,className:`nav-tab ${e===n.id?`active`:``}`,onClick:()=>t(n.id),children:[(0,C.jsxs)(`span`,{className:`nav-tab-label`,children:[n.emoji,` `,n.label]}),(0,C.jsx)(`span`,{className:`nav-tab-badge`,children:n.sub})]},n.id))})}),(0,C.jsx)(`div`,{className:`navbar-right`,children:(0,C.jsx)(`span`,{className:`nav-company`,children:`PT. Inovasi Mitra Sejati`})})]}),(0,C.jsxs)(`header`,{className:`hero-strip`,role:`banner`,children:[(0,C.jsxs)(`div`,{className:`hero-content`,children:[(0,C.jsx)(`div`,{className:`hero-badge`,children:`IMS Finance System`}),(0,C.jsx)(`h1`,{className:`hero-title`,children:`Sistem Kredit Kendaraan`}),(0,C.jsx)(`p`,{className:`hero-sub`,children:`Kalkulator angsuran kredit · Monitoring jatuh tempo · Kalkulasi denda keterlambatan`})]}),(0,C.jsxs)(`div`,{className:`hero-orbs`,"aria-hidden":`true`,children:[(0,C.jsx)(`div`,{className:`orb orb1`}),(0,C.jsx)(`div`,{className:`orb orb2`})]})]}),(0,C.jsx)(`main`,{className:`main-content`,role:`main`,children:o?(0,C.jsxs)(`div`,{className:`app-loading`,children:[(0,C.jsx)(`div`,{className:`app-loading-spinner`}),(0,C.jsx)(`span`,{children:`Memuat data...`})]}):(0,C.jsxs)(C.Fragment,{children:[e===`kalkulator`&&(0,C.jsx)(le,{contracts:n,selectedIdx:i,onSelect:a,onSave:d,onDelete:f}),e===`jatuh-tempo`&&(0,C.jsx)(ue,{contracts:n,selectedIdx:i,onSelect:a}),e===`denda`&&(0,C.jsx)(T,{contracts:n,selectedIdx:i,onSelect:a}),e===`panduan`&&(0,C.jsx)(D,{})]})}),(0,C.jsx)(`footer`,{className:`app-footer`,role:`contentinfo`,children:(0,C.jsxs)(`div`,{className:`footer-inner`,children:[(0,C.jsx)(`span`,{children:`© 2024 PT. Inovasi Mitra Sejati — Developer Assessment`}),(0,C.jsxs)(`div`,{className:`footer-badges`,children:[(0,C.jsx)(`span`,{className:`badge badge-blue`,children:`React`}),(0,C.jsx)(`span`,{className:`badge badge-green`,children:`Vite`}),(0,C.jsx)(`span`,{className:`badge badge-amber`,children:`IMS Finance`})]})]})})]})}v.createRoot(document.getElementById(`root`)).render((0,C.jsx)(_.StrictMode,{children:(0,C.jsx)(xe,{})}));
+Ada yang bisa saya bantu seputar sistem kredit kendaraan IMS Finance?`,time:fe()}]),[o,s]=(0,_.useState)(``),[c,l]=(0,_.useState)(!1),u=(0,_.useRef)(null);(0,_.useEffect)(()=>{u.current?.scrollIntoView({behavior:`smooth`})},[i,c]);let d=e=>{let t=e.trim();t&&(a(e=>[...e,{id:Date.now(),from:`user`,text:t,time:fe()}]),s(``),l(!0),setTimeout(()=>{a(e=>[...e,{id:Date.now()+1,from:`bot`,text:pe(t),time:fe()}]),l(!1)},600+Math.random()*400))};return(0,C.jsxs)(C.Fragment,{children:[(0,C.jsxs)(`div`,{className:`chat-window ${e?``:`chat-window--hidden`}`,children:[(0,C.jsxs)(`div`,{className:`chat-header`,children:[(0,C.jsx)(`div`,{className:`chat-avatar`,children:`🤖`}),(0,C.jsxs)(`div`,{className:`chat-header-info`,children:[(0,C.jsx)(`div`,{className:`chat-header-name`,children:`IMS Bot`}),(0,C.jsxs)(`div`,{className:`chat-header-status`,children:[(0,C.jsx)(`span`,{className:`chat-status-dot`}),` Online — siap membantu`]})]}),(0,C.jsx)(`button`,{className:`chat-close`,onClick:()=>t(!1),"aria-label":`Tutup`,children:`✕`})]}),(0,C.jsxs)(`div`,{className:`chat-messages`,children:[i.map(e=>(0,C.jsxs)(`div`,{className:`chat-msg chat-msg--${e.from}`,children:[e.from===`bot`&&(0,C.jsx)(`div`,{className:`chat-msg-icon`,children:`🤖`}),(0,C.jsxs)(`div`,{children:[(0,C.jsx)(`div`,{className:`chat-bubble chat-bubble--${e.from}`,children:me(e.text)}),(0,C.jsx)(`div`,{className:`chat-time`,children:e.time})]})]},e.id)),c&&(0,C.jsxs)(`div`,{className:`chat-msg chat-msg--bot`,children:[(0,C.jsx)(`div`,{className:`chat-msg-icon`,children:`🤖`}),(0,C.jsx)(`div`,{className:`chat-bubble chat-bubble--bot`,children:(0,C.jsxs)(`div`,{className:`chat-typing`,children:[(0,C.jsx)(`span`,{}),(0,C.jsx)(`span`,{}),(0,C.jsx)(`span`,{})]})})]}),(0,C.jsx)(`div`,{ref:u})]}),(0,C.jsx)(`div`,{className:`chat-chips`,children:de.map(e=>(0,C.jsx)(`button`,{className:`chat-chip`,onClick:()=>d(e),children:e},e))}),(0,C.jsxs)(`div`,{className:`chat-input-row`,children:[(0,C.jsx)(`input`,{className:`chat-input`,value:o,onChange:e=>s(e.target.value),onKeyDown:e=>{e.key===`Enter`&&!e.shiftKey&&(e.preventDefault(),d(o))},placeholder:`Ketik pertanyaan kamu...`,disabled:c}),(0,C.jsx)(`button`,{className:`chat-send`,onClick:()=>d(o),disabled:!o.trim()||c,"aria-label":`Kirim`,children:`➤`})]})]}),(0,C.jsxs)(`button`,{className:`chat-fab`,onClick:()=>{t(!0),r(!1)},"aria-label":`Buka Chat Bot`,children:[e?`✕`:`🤖`,n&&!e&&(0,C.jsx)(`span`,{className:`chat-fab-badge`,children:`1`})]})]})}var O=`/api/contracts.php`,he=window.location.hostname===`localhost`||window.location.hostname===`127.0.0.1`,ge=`ims-contracts`;function _e(){try{return JSON.parse(localStorage.getItem(ge))??[]}catch{return[]}}function ve(e){localStorage.setItem(ge,JSON.stringify(e))}var ye={async getAll(){if(he)return _e();let e=await fetch(O);if(!e.ok)throw Error(`Gagal memuat data`);return e.json()},async save(e){if(he){let t=_e(),n=t.findIndex(t=>t.kontrakNo===e.kontrakNo);return n>=0?t[n]=e:t.push(e),ve(t),{success:!0}}let t=await fetch(O,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify(e)});if(!t.ok)throw Error(`Gagal menyimpan kontrak`);return t.json()},async delete(e){if(he)return ve(_e().filter(t=>t.kontrakNo!==e)),{success:!0};let t=await fetch(`${O}?id=${encodeURIComponent(e)}`,{method:`DELETE`});if(!t.ok)throw Error(`Gagal menghapus kontrak`);return t.json()}},be=[{id:`kalkulator`,emoji:`🧮`,label:`Kalkulator Angsuran`,sub:`Soal 1`},{id:`jatuh-tempo`,emoji:`📅`,label:`Jatuh Tempo`,sub:`Soal 2`},{id:`denda`,emoji:`⚠️`,label:`Denda Keterlambatan`,sub:`Soal 3`}];function xe(){let[e,t]=(0,_.useState)(`kalkulator`),[n,r]=(0,_.useState)([]),[i,a]=(0,_.useState)(null),[o,s]=(0,_.useState)(!0),[c,l]=(0,_.useState)(null);(0,_.useEffect)(()=>{ye.getAll().then(e=>{r(e),s(!1)}).catch(()=>{s(!1)})},[]);let u=(0,_.useCallback)((e,t=`success`)=>{l({msg:e,type:t}),setTimeout(()=>l(null),3e3)},[]),d=(0,_.useCallback)(async e=>{try{await ye.save(e),r(t=>{let n=t.findIndex(t=>t.kontrakNo===e.kontrakNo);if(n>=0){let r=[...t];return r[n]=e,a(n),r}return a(t.length),[...t,e]}),u(`✅ Kontrak berhasil disimpan!`)}catch{u(`❌ Gagal menyimpan kontrak`,`error`)}},[u]),f=(0,_.useCallback)(async e=>{let t=n[e]?.kontrakNo;try{await ye.delete(t),r(t=>{let n=t.filter((t,n)=>n!==e);return a(n.length>0?0:null),n}),u(`🗑️ Kontrak dihapus`)}catch{u(`❌ Gagal menghapus kontrak`,`error`)}},[n,u]);return(0,C.jsxs)(`div`,{className:`app`,children:[c&&(0,C.jsx)(`div`,{className:`app-toast ${c.type===`error`?`app-toast--error`:``}`,children:c.msg}),(0,C.jsxs)(`nav`,{className:`navbar`,role:`navigation`,"aria-label":`Navigasi utama`,children:[(0,C.jsxs)(`div`,{className:`navbar-brand`,children:[(0,C.jsx)(`img`,{src:`/ims-logo.png`,alt:`IMS Finance Logo`,className:`brand-logo-img`}),(0,C.jsx)(`div`,{className:`brand-tag`,children:`Sistem Kredit Kendaraan`})]}),(0,C.jsx)(`div`,{className:`navbar-tabs`,role:`tablist`,children:(0,C.jsx)(`div`,{className:`tabs-inner`,children:be.map(n=>(0,C.jsxs)(`button`,{role:`tab`,"aria-selected":e===n.id,className:`nav-tab ${e===n.id?`active`:``}`,onClick:()=>t(n.id),children:[(0,C.jsxs)(`span`,{className:`nav-tab-label`,children:[n.emoji,` `,n.label]}),(0,C.jsx)(`span`,{className:`nav-tab-badge`,children:n.sub})]},n.id))})}),(0,C.jsx)(`div`,{className:`navbar-right`,children:(0,C.jsx)(`span`,{className:`nav-company`,children:`PT. Inovasi Mitra Sejati`})})]}),(0,C.jsxs)(`header`,{className:`hero-strip`,role:`banner`,children:[(0,C.jsxs)(`div`,{className:`hero-content`,children:[(0,C.jsx)(`div`,{className:`hero-badge`,children:`IMS Finance System`}),(0,C.jsx)(`h1`,{className:`hero-title`,children:`Sistem Kredit Kendaraan`}),(0,C.jsx)(`p`,{className:`hero-sub`,children:`Kalkulator angsuran kredit · Monitoring jatuh tempo · Kalkulasi denda keterlambatan`})]}),(0,C.jsxs)(`div`,{className:`hero-orbs`,"aria-hidden":`true`,children:[(0,C.jsx)(`div`,{className:`orb orb1`}),(0,C.jsx)(`div`,{className:`orb orb2`})]})]}),(0,C.jsx)(`main`,{className:`main-content`,role:`main`,children:o?(0,C.jsxs)(`div`,{className:`app-loading`,children:[(0,C.jsx)(`div`,{className:`app-loading-spinner`}),(0,C.jsx)(`span`,{children:`Memuat data...`})]}):(0,C.jsxs)(C.Fragment,{children:[e===`kalkulator`&&(0,C.jsx)(le,{contracts:n,selectedIdx:i,onSelect:a,onSave:d,onDelete:f}),e===`jatuh-tempo`&&(0,C.jsx)(ue,{contracts:n,selectedIdx:i,onSelect:a}),e===`denda`&&(0,C.jsx)(T,{contracts:n,selectedIdx:i,onSelect:a})]})}),(0,C.jsx)(`footer`,{className:`app-footer`,role:`contentinfo`,children:(0,C.jsxs)(`div`,{className:`footer-inner`,children:[(0,C.jsx)(`span`,{children:`© 2024 PT. Inovasi Mitra Sejati — Developer Assessment`}),(0,C.jsxs)(`div`,{className:`footer-badges`,children:[(0,C.jsx)(`span`,{className:`badge badge-blue`,children:`React`}),(0,C.jsx)(`span`,{className:`badge badge-green`,children:`Vite`}),(0,C.jsx)(`span`,{className:`badge badge-amber`,children:`IMS Finance`})]})]})}),(0,C.jsx)(D,{})]})}v.createRoot(document.getElementById(`root`)).render((0,C.jsx)(_.StrictMode,{children:(0,C.jsx)(xe,{})}));
