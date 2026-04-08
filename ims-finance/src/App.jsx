@@ -176,7 +176,7 @@ export default function App() {
       </footer>
 
       {/* ── Floating ChatBot ── */}
-      <Panduan />
+      <Panduan contracts={contracts} />
     </div>
   );
 }

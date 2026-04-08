@@ -111,12 +111,33 @@ function getTime() {
   return new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
 }
 
-function findLocalReply(text) {
+function findLocalReply(text, contracts = []) {
   const lower = text.toLowerCase();
   // 1. Try calculator
   const calc = tryCalculate(lower);
   if (calc) return calc;
-  // 2. Keyword match
+
+  // 2. Query about saved contracts
+  if (lower.includes('daftar kontrak') || lower.includes('kontrak apa') || lower.includes('kontrak yang ada') || lower.includes('list kontrak')) {
+    if (contracts.length === 0) return '📋 Belum ada kontrak tersimpan.\n\nTambahkan kontrak di tab **Kalkulator Angsuran** terlebih dahulu!';
+    const list = contracts.map((c, i) =>
+      `${i+1}. **${c.kontrakNo}** — ${c.clientName}\n   Angsuran: Rp ${Math.round(c.hasil?.angsuranPerBulan || 0).toLocaleString('id-ID')}/bln · Tenor: ${c.form?.tenorBulan} bln`
+    ).join('\n');
+    return `📋 **Daftar Kontrak (${contracts.length} data)**\n\n${list}`;
+  }
+
+  // 3. Query about specific contract by name or number
+  for (const c of contracts) {
+    const name = c.clientName?.toLowerCase() || '';
+    const no   = c.kontrakNo?.toLowerCase()  || '';
+    if (lower.includes(name) || lower.includes(no)) {
+      const h = c.hasil || {};
+      const f = c.form  || {};
+      return `📄 **Kontrak ${c.kontrakNo} — ${c.clientName}**\n\n• OTR: Rp ${Math.round(h.hargaOtr||0).toLocaleString('id-ID')}\n• DP (${f.downPayment}%): Rp ${Math.round(h.downPayment||0).toLocaleString('id-ID')}\n• Pokok: Rp ${Math.round(h.pokokPinjaman||0).toLocaleString('id-ID')}\n• Bunga: Rp ${Math.round(h.totalBunga||0).toLocaleString('id-ID')}\n• **Angsuran: Rp ${Math.round(h.angsuranPerBulan||0).toLocaleString('id-ID')}/bln**\n• Tenor: ${f.tenorBulan} bulan\n• Mulai: ${f.tanggalAngsuranPertama}`;
+    }
+  }
+
+  // 4. Keyword match KB
   for (const item of KB) {
     if (item.keys.some(k => lower.includes(k))) return item.reply;
   }
@@ -125,26 +146,45 @@ function findLocalReply(text) {
 
 const isDemo = GEMINI_API_KEY.includes('Demo') || GEMINI_API_KEY.includes('REPLACE');
 
-async function getReply(text, history) {
-  // Local calculator first (even if Gemini available)
+async function getReply(text, history, contracts = []) {
+  // 1. Local calculator first
   const calc = tryCalculate(text.toLowerCase());
   if (calc) return calc;
 
-  // Try Gemini
+  // 2. Local contract queries (faster than Gemini for these)
+  const localContract = (() => {
+    const lower = text.toLowerCase();
+    if (lower.includes('daftar kontrak') || lower.includes('kontrak apa') || lower.includes('kontrak yang ada') || lower.includes('list kontrak')) {
+      if (contracts.length === 0) return '📋 Belum ada kontrak tersimpan.\n\nTambahkan di tab **Kalkulator Angsuran** terlebih dahulu!';
+      const list = contracts.map((c, i) =>
+        `${i+1}. **${c.kontrakNo}** — ${c.clientName}\n   Angsuran: Rp ${Math.round(c.hasil?.angsuranPerBulan||0).toLocaleString('id-ID')}/bln · Tenor: ${c.form?.tenorBulan} bln`
+      ).join('\n');
+      return `📋 **Daftar Kontrak (${contracts.length} data)**\n\n${list}`;
+    }
+    return null;
+  })();
+  if (localContract) return localContract;
+
+  // 3. Build contracts context for Gemini
+  const contractsContext = contracts.length > 0
+    ? '\n\nDATA KONTRAK TERSIMPAN SAAT INI:\n' + contracts.map(c => {
+        const h = c.hasil || {}; const f = c.form || {};
+        return `- ${c.kontrakNo} | ${c.clientName} | OTR: ${h.hargaOtr} | DP: ${f.downPayment}% | Tenor: ${f.tenorBulan} bln | Angsuran: Rp ${Math.round(h.angsuranPerBulan||0).toLocaleString('id-ID')}/bln | Mulai: ${f.tanggalAngsuranPertama}`;
+      }).join('\n')
+    : '';
+
+  // 4. Try Gemini AI
   if (!isDemo) {
     try {
       const contents = [
-        ...history.map(m => ({
-          role: m.from === 'user' ? 'user' : 'model',
-          parts: [{ text: m.text }],
-        })),
+        ...history.map(m => ({ role: m.from === 'user' ? 'user' : 'model', parts: [{ text: m.text }] })),
         { role: 'user', parts: [{ text }] },
       ];
       const res = await fetch(GEMINI_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          systemInstruction: { parts: [{ text: SYSTEM_PROMPT + contractsContext }] },
           contents,
           generationConfig: { maxOutputTokens: 300, temperature: 0.7 },
         }),
@@ -156,10 +196,11 @@ async function getReply(text, history) {
     } catch { /* fall through */ }
   }
 
-  // Fallback to local KB
-  return findLocalReply(text)
-    ?? '🤔 Maaf, saya belum paham pertanyaan itu.\n\nCoba tanya:\n• **Soal 1/2/3**\n• **Rumus** flat rate\n• **Data** Pak Sugus\n• Contoh: *"OTR 250jt DP 20% tenor 18 bunga 14%"*';
+  // 5. Fallback local KB
+  return findLocalReply(text, contracts)
+    ?? '🤔 Maaf, saya belum paham pertanyaan itu.\n\nCoba tanya:\n• **Daftar kontrak** yang tersimpan\n• **Soal 1/2/3**\n• **Rumus** flat rate\n• Contoh: *"OTR 250jt DP 20% tenor 18 bunga 14%"*';
 }
+
 
 function renderText(text) {
   return text.split('\n').map((line, i, arr) => {
@@ -172,7 +213,7 @@ function renderText(text) {
   });
 }
 
-export default function ChatBot() {
+export default function ChatBot({ contracts = [] }) {
   const [open, setOpen]     = useState(false);
   const [hasNew, setHasNew] = useState(true);
   const [messages, setMessages] = useState([
@@ -191,9 +232,8 @@ export default function ChatBot() {
     setMessages(prev => [...prev, userMsg]);
     setInput(''); setTyping(true);
 
-    // Keep last 10 messages for context
     const history = messages.slice(-10);
-    const reply = await getReply(q, history);
+    const reply = await getReply(q, history, contracts);
 
     setMessages(prev => [...prev, { id: Date.now()+1, from: 'bot', text: reply, time: getTime() }]);
     setTyping(false);
