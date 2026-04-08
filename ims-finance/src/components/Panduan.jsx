@@ -5,7 +5,7 @@ import './Panduan.css';
 // ⚙️ GEMINI API CONFIG
 // Dapatkan API Key GRATIS di: https://aistudio.google.com/app/apikey
 // ================================================================
-const GEMINI_API_KEY = 'AIzaSyDemo_REPLACE_WITH_YOUR_KEY'; // ← ganti dengan API key kamu
+const GEMINI_API_KEY = 'AIzaSyB1351oUk36q9TxT755mSi89iWZf5vWkx8';
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 const SYSTEM_PROMPT = `Kamu adalah IMS Bot, asisten virtual untuk aplikasi IMS Finance — Sistem Kredit Kendaraan milik PT. Inovasi Mitra Sejati.
