@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+ims-finance/node_modules/
+
+# Build output
+dist/
+ims-finance/dist/
+build/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# Vite cache
+.vite/
+ims-finance/.vite/

@@ -1,0 +1,139 @@
+/* JatuhTempo — ISO Responsive */
+.jt-page { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.jt-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.jt-page-title {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
+}
+
+.jt-page-desc { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* Two-column body */
+.jt-body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.jt-left  { display: flex; flex-direction: column; gap: var(--space-5); }
+.jt-right {
+  position: sticky;
+  top: calc(var(--navbar-h) + var(--space-4));
+}
+
+/* Params row */
+.jt-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+/* Selected info strip */
+.selected-info-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Summary strip */
+.summary-strip {
+  display: flex;
+  background: var(--surface-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-4);
+}
+
+.strip-cell {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-right: 1px solid var(--border-default);
+}
+.strip-cell:last-child { border-right: none; }
+
+.strip-cell-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.strip-cell-val {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.strip-cell-val--blue  { color: var(--primary-light); }
+.strip-cell-val--green { color: var(--success); }
+
+/* Angsuran badge */
+.angsuran-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 50%;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-amber-300);
+  flex-shrink: 0;
+}
+
+/* Result total cell */
+.result-total-val {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--primary-light);
+  letter-spacing: -0.02em;
+}
+
+.result-total-sub { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+
+/* ── Responsive ── */
+@media (max-width: 1199px) {
+  .jt-body { grid-template-columns: 1fr 280px; }
+}
+
+@media (max-width: 991px) {
+  .jt-body { grid-template-columns: 1fr; }
+  .jt-right { position: static; }
+}
+
+@media (max-width: 767px) {
+  .jt-params { grid-template-columns: 1fr; }
+  .jt-page-title { font-size: var(--text-2xl); }
+  .summary-strip { flex-direction: column; }
+  .strip-cell { border-right: none; border-bottom: 1px solid var(--border-default); }
+  .strip-cell:last-child { border-bottom: none; }
+}
+
+@media (max-width: 575px) {
+  .jt-page-title { font-size: var(--text-xl); }
+}

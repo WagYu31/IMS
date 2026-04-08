@@ -1,0 +1,199 @@
+/* DendaKeterlambatan — ISO Responsive */
+.denda-page { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.denda-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.denda-page-title {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
+}
+
+.denda-page-desc { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* Two-column body */
+.denda-body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.denda-left  { display: flex; flex-direction: column; gap: var(--space-5); }
+.denda-right {
+  position: sticky;
+  top: calc(var(--navbar-h) + var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Params grid */
+.denda-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.denda-params .col-full { grid-column: 1 / -1; }
+
+/* Summary stat boxes (right panel) */
+.denda-stat-box {
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.denda-stat-box--red {
+  background: rgba(239,68,68,0.05);
+  border-color: rgba(239,68,68,0.25);
+}
+.denda-stat-box--amber {
+  background: rgba(245,158,11,0.05);
+  border-color: rgba(245,158,11,0.25);
+}
+.denda-stat-box--danger {
+  background: rgba(239,68,68,0.08);
+  border-color: rgba(239,68,68,0.35);
+}
+
+.dsb-icon  { font-size: 20px; }
+.dsb-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.dsb-value     { font-size: var(--text-xl); font-weight: 800; color: var(--text-primary); }
+.dsb-value--big{ font-size: var(--text-xl); font-weight: 800; color: var(--danger-light); }
+.dsb-sub       { font-size: var(--text-xs); color: var(--text-muted); }
+
+/* Denda table cells */
+.ke-chip-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 50%;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--danger-light);
+  flex-shrink: 0;
+}
+
+.hari-cell { display: flex; align-items: baseline; gap: var(--space-1); }
+.hari-num  { font-size: var(--text-lg); font-weight: 800; color: var(--color-amber-300); }
+.hari-txt  { font-size: var(--text-xs); color: var(--text-muted); }
+
+.td-denda { font-weight: 700; font-size: var(--text-sm); color: var(--danger-light); }
+
+tfoot .denda-total-row { background: rgba(239,68,68,0.06); border-top: 1.5px solid var(--danger); }
+.td-denda-total { font-size: var(--text-base); font-weight: 800; color: var(--danger-light); }
+
+/* Kalkulasi detail cards */
+.kalkulasi-list { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.kalkulasi-card {
+  background: var(--surface-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+}
+
+.kalkulasi-title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.kalkulasi-formula {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.f-operand {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--surface-card2);
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-strong);
+}
+
+.f-operator { font-size: var(--text-md); font-weight: 800; color: var(--text-muted); }
+
+.f-result {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--danger-light);
+  padding: 3px var(--space-3);
+  background: rgba(239,68,68,0.1);
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+/* Hint card */
+.hint-card { text-align: left; }
+.hint-icon { font-size: 28px; margin-bottom: var(--space-3); }
+.hint-list {
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* selected-info-strip reused */
+.selected-info-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1199px) {
+  .denda-body { grid-template-columns: 1fr 280px; }
+}
+
+@media (max-width: 991px) {
+  .denda-body { grid-template-columns: 1fr; }
+  .denda-right { position: static; }
+}
+
+@media (max-width: 767px) {
+  .denda-params { grid-template-columns: 1fr; }
+  .denda-params .col-full { grid-column: 1; }
+  .denda-page-title { font-size: var(--text-2xl); }
+}
+
+@media (max-width: 575px) {
+  .denda-page-title { font-size: var(--text-xl); }
+}
