@@ -111,6 +111,30 @@
 
 .navbar-right {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background: var(--surface-card2);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--primary);
+  background: rgba(59,130,246,0.1);
+  transform: rotate(20deg);
 }
 
 .nav-company {
@@ -317,3 +341,12 @@
   animation: spin 0.8s linear infinite;
 }
 
+
+
+/* ── Light Mode Hero Override ── */
+[data-theme="light"] .hero-strip {
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #dbeafe 100%);
+}
+[data-theme="light"] .hero-title  { color: #1e3a8a; }
+[data-theme="light"] .hero-sub    { color: #334155; }
+[data-theme="light"] .hero-badge  { background: rgba(59,130,246,0.12); color: #1d4ed8; }

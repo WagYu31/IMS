@@ -18,6 +18,15 @@ export default function App() {
   const [selectedIdx, setSelectedIdx] = useState(null);
   const [loading, setLoading]         = useState(true);
   const [toast, setToast]             = useState(null);
+  const [theme, setTheme]             = useState(() => localStorage.getItem('ims-theme') || 'dark');
+
+  // ── Apply theme to body ───────────────────────────────────
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('ims-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   // ── Load data saat pertama buka ───────────────────────────
   useEffect(() => {
@@ -108,6 +117,14 @@ export default function App() {
         </div>
 
         <div className="navbar-right">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           <span className="nav-company">PT. Inovasi Mitra Sejati</span>
         </div>
       </nav>

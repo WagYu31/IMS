@@ -143,6 +143,34 @@
   --transition-slow:   0.3s ease;
 }
 
+/* ── Light Mode Overrides ── */
+[data-theme="light"] {
+  --surface-base:      #f0f4f8;
+  --surface-elevated:  #e8edf5;
+  --surface-card:      #ffffff;
+  --surface-card2:     #f1f5f9;
+  --surface-input:     #f8fafc;
+  --surface-hover:     #e2e8f0;
+  --surface-overlay:   rgba(240,244,248,0.96);
+  --surface-body:      #f0f4f8;
+
+  --border-subtle:     #e2e8f0;
+  --border-default:    #cbd5e1;
+  --border-strong:     #94a3b8;
+
+  --text-primary:      #0f172a;
+  --text-secondary:    #1e293b;
+  --text-muted:        #64748b;
+  --text-disabled:     #94a3b8;
+
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:   0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl:   0 20px 60px rgba(0,0,0,0.15);
+
+  --gradient-card:  linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+}
+
 /* ── Base ── */
 html {
   font-size: 16px;
