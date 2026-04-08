@@ -33,10 +33,8 @@
   flex-direction: column;
   gap: var(--space-5);
   position: sticky;
-  top: calc(var(--navbar-h) + var(--space-6));
-  max-height: calc(100vh - var(--navbar-h) - var(--space-12));
-  overflow-y: auto;
-  padding-right: 2px; /* prevent scrollbar overlap */
+  top: calc(var(--navbar-h) + var(--space-4));
+  padding-bottom: var(--space-8);
 }
 
 /* ── Form Card ── */
