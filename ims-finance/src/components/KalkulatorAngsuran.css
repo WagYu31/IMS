@@ -56,6 +56,60 @@
 /* span across 2 columns */
 .col-span-2 { grid-column: 1 / -1; }
 
+/* ── Input suffix wrapper (for % label) ── */
+.input-suffix-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-suffix-wrap .form-control {
+  flex: 1;
+  padding-right: 72px; /* space for suffix */
+}
+.input-suffix {
+  position: absolute;
+  right: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── DP Preset chips ── */
+.dp-presets {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.dp-chip {
+  flex: 1;
+  padding: var(--space-1) 0;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--surface-input);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.dp-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary-light);
+  background: rgba(59,130,246,0.08);
+}
+.dp-chip--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Remove number input spin arrows */
+.form-control[type="number"]::-webkit-inner-spin-button,
+.form-control[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+.form-control[type="number"] { -moz-appearance: textfield; }
+
 .kalk-actions {
   display: flex;
   gap: var(--space-3);

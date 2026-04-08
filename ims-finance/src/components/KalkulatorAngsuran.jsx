@@ -12,7 +12,7 @@ const EMPTY = {
 };
 
 const NUM_FIELDS = ['tenorBulan'];
-const PERCENT_FIELDS = ['dpPersen', 'bungaPerTahun'];
+const FLOAT_FIELDS = ['dpPersen', 'bungaPerTahun'];
 
 /** Format angka ke "Rp 240.000.000" untuk tampilan di input */
 const formatInputRupiah = (val) => {
@@ -40,6 +40,8 @@ const parseInputPercent = (str) => {
   return cleaned ? parseFloat(cleaned) : '';
 };
 
+const DP_PRESETS = [10, 20, 25, 30];
+
 export default function KalkulatorAngsuran({ contracts, selectedIdx, onSelect, onSave, onDelete }) {
   const [form, setForm]       = useState(EMPTY);
   const [preview, setPreview] = useState(null);
@@ -49,8 +51,8 @@ export default function KalkulatorAngsuran({ contracts, selectedIdx, onSelect, o
     const { name, value } = e.target;
     if (name === 'otr') {
       setForm(p => ({ ...p, otr: parseInputRupiah(value) }));
-    } else if (PERCENT_FIELDS.includes(name)) {
-      setForm(p => ({ ...p, [name]: parseInputPercent(value) }));
+    } else if (FLOAT_FIELDS.includes(name)) {
+      setForm(p => ({ ...p, [name]: value === '' ? '' : parseFloat(value) || 0 }));
     } else if (NUM_FIELDS.includes(name)) {
       setForm(p => ({ ...p, [name]: parseFloat(value) || '' }));
     } else {
@@ -128,15 +130,31 @@ export default function KalkulatorAngsuran({ contracts, selectedIdx, onSelect, o
               </div>
               <div className="form-group">
                 <label className="form-label">Down Payment</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="dpPersen"
-                  inputMode="decimal"
-                  value={formatInputPercent(form.dpPersen)}
-                  onChange={handleChange}
-                  placeholder="20%"
-                />
+                {/* Preset chips */}
+                <div className="dp-presets">
+                  {DP_PRESETS.map(p => (
+                    <button
+                      key={p}
+                      type="button"
+                      className={`dp-chip${form.dpPersen === p ? ' dp-chip--active' : ''}`}
+                      onClick={() => { setForm(prev => ({ ...prev, dpPersen: p })); setPreview(null); }}
+                    >{p}%</button>
+                  ))}
+                </div>
+                {/* Number input with % suffix */}
+                <div className="input-suffix-wrap">
+                  <input
+                    className="form-control"
+                    type="number"
+                    name="dpPersen"
+                    value={form.dpPersen}
+                    onChange={handleChange}
+                    min="0" max="100"
+                    step="0.5"
+                    placeholder="20"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
               </div>
               <div className="form-group">
                 <label className="form-label">Tenor (Bulan)</label>
@@ -145,15 +163,19 @@ export default function KalkulatorAngsuran({ contracts, selectedIdx, onSelect, o
               </div>
               <div className="form-group">
                 <label className="form-label">Bunga Flat / Tahun</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="bungaPerTahun"
-                  inputMode="decimal"
-                  value={formatInputPercent(form.bungaPerTahun)}
-                  onChange={handleChange}
-                  placeholder="14%"
-                />
+                <div className="input-suffix-wrap">
+                  <input
+                    className="form-control"
+                    type="number"
+                    name="bungaPerTahun"
+                    value={form.bungaPerTahun}
+                    onChange={handleChange}
+                    min="0" max="100"
+                    step="0.1"
+                    placeholder="14"
+                  />
+                  <span className="input-suffix">% / thn</span>
+                </div>
               </div>
               <div className="form-group col-span-2">
                 <label className="form-label">Tanggal Angsuran Pertama</label>
