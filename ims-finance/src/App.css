@@ -279,8 +279,9 @@
   .navbar-tabs::-webkit-scrollbar { display: none; }
 
   .tabs-inner { width: max-content; }
-  .navbar-right { display: none; }
-  .brand-tag { display: none; }
+  .navbar-right { display: flex; } /* tetap tampil untuk theme toggle */
+  .nav-company  { display: none; } /* sembunyikan teks perusahaan di mobile */
+  .brand-tag    { display: none; }
 
   .hero-title { font-size: var(--text-2xl); }
   .hero-orbs { display: none; }
