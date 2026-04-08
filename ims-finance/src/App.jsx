@@ -4,6 +4,7 @@ import JatuhTempo from './components/JatuhTempo';
 import DendaKeterlambatan from './components/DendaKeterlambatan';
 import Panduan from './components/Panduan';
 import { api } from './api.js';
+import { useScrollReveal } from './hooks/useScrollReveal.js';
 import './App.css';
 
 const TABS = [
@@ -19,6 +20,9 @@ export default function App() {
   const [loading, setLoading]         = useState(true);
   const [toast, setToast]             = useState(null);
   const [theme, setTheme]             = useState(() => localStorage.getItem('ims-theme') || 'dark');
+
+  // ── Scroll reveal ──────────────────────────────────
+  useScrollReveal();
 
   // ── Apply theme to body ───────────────────────────────────
   useEffect(() => {
@@ -132,9 +136,9 @@ export default function App() {
       {/* ── Hero ── */}
       <header className="hero-strip" role="banner">
         <div className="hero-content">
-          <div className="hero-badge">IMS Finance System</div>
-          <h1 className="hero-title">Sistem Kredit Kendaraan</h1>
-          <p className="hero-sub">
+          <div className="hero-badge reveal reveal-d1">IMS Finance System</div>
+          <h1 className="hero-title text-shimmer">Sistem Kredit Kendaraan</h1>
+          <p className="hero-sub reveal reveal-d2">
             Kalkulator angsuran kredit · Monitoring jatuh tempo · Kalkulasi denda keterlambatan
           </p>
         </div>

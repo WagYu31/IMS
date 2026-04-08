@@ -208,21 +208,98 @@ body {
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 @keyframes pulseGlow {
-  0%,100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.3); }
+  0%,100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.35); }
   50%      { box-shadow: 0 0 0 8px rgba(59,130,246,0); }
 }
 
 @keyframes shimmer {
   0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  100% { background-position:  200% 0; }
 }
 
-.fade-in { animation: fadeInUp 0.4s ease both; }
+@keyframes shimmerText {
+  0%   { background-position: -400% center; }
+  100% { background-position:  400% center; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  30%       { transform: scale(1.2) rotate(-5deg); }
+  60%       { transform: scale(0.95) rotate(3deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Scroll Reveal System ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition:
+    opacity  0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.revealed { opacity: 1; transform: translateX(0); }
+
+/* Stagger delays */
+.reveal-d1 { transition-delay: 0.05s; }
+.reveal-d2 { transition-delay: 0.12s; }
+.reveal-d3 { transition-delay: 0.19s; }
+.reveal-d4 { transition-delay: 0.26s; }
+.reveal-d5 { transition-delay: 0.33s; }
+
+/* Shimmer utility text */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary) 0%,
+    #60a5fa 25%,
+    #a78bfa 50%,
+    #60a5fa 75%,
+    var(--text-primary) 100%
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 5s linear infinite;
+}
+
+.fade-in { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* ── Button System ── */
 .btn {
@@ -238,24 +315,42 @@ body {
   font-size: var(--text-sm);
   font-weight: 600;
   line-height: 1;
-  transition: all var(--transition-base);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   text-decoration: none;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
 
+/* Ripple shimmer overlay on hover */  
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 0.5s ease;
+}
+.btn:hover:not(:disabled)::after {
+  background-position: 100% 0;
+}
+
 .btn-primary {
-  background: var(--gradient-brand);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 60%, #06b6d4 100%);
+  background-size: 200% 200%;
   color: #fff;
   box-shadow: var(--shadow-blue);
 }
 .btn-primary:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-blue-hover);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.5);
+  background-position: right center;
 }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active:not(:disabled) { transform: scale(0.97); box-shadow: var(--shadow-blue); }
 
 .btn-save {
   background: var(--gradient-success);
@@ -263,9 +358,10 @@ body {
   box-shadow: var(--shadow-green);
 }
 .btn-save:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(16,185,129,0.45);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 28px rgba(16,185,129,0.5);
 }
+.btn-save:active:not(:disabled) { transform: scale(0.97); }
 
 .btn-danger {
   background: var(--gradient-danger);
@@ -273,9 +369,10 @@ body {
   box-shadow: var(--shadow-red);
 }
 .btn-danger:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(239,68,68,0.45);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 28px rgba(239,68,68,0.5);
 }
+.btn-danger:active:not(:disabled) { transform: scale(0.97); }
 
 .btn-outlined {
   background: transparent;
@@ -298,10 +395,17 @@ body {
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-md);
-  transition: border-color var(--transition-base);
+  transition:
+    border-color 0.25s ease,
+    box-shadow   0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform    0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card:hover { border-color: var(--border-strong); }
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
 
 .card--accent-top { position: relative; overflow: hidden; }
 .card--accent-top::before {
@@ -337,8 +441,11 @@ body {
   font-family: inherit;
   font-size: var(--text-base);
   width: 100%;
-  min-height: 44px; /* WCAG touch target */
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 44px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow   0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background   0.2s ease;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -346,7 +453,8 @@ body {
 
 .form-control:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2), 0 0 0 1px rgba(59,130,246,0.4);
+  background: var(--surface-card);
 }
 
 .form-control::placeholder { color: var(--text-disabled); font-size: var(--text-sm); }
