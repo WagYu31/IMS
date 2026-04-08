@@ -269,3 +269,51 @@
   .hero-strip { padding: var(--space-6) var(--content-pad-x); }
   .hero-badge { font-size: 10px; }
 }
+
+/* ── Toast Notification ── */
+.app-toast {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 9999;
+  background: var(--surface-card2);
+  border: 1px solid var(--color-green-400);
+  color: var(--color-green-400);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.25s ease;
+}
+
+.app-toast--error {
+  border-color: var(--danger-light);
+  color: var(--danger-light);
+}
+
+/* ── Loading State ── */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 300px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.app-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
