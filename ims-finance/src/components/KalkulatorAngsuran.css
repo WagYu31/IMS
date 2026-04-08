@@ -41,7 +41,11 @@
 
 /* ── Form Card ── */
 .kalk-form-card {
-  composes: card from global;
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
 }
 
 .kalk-grid {
@@ -62,8 +66,7 @@
   border-top: 1px solid var(--border-subtle);
 }
 
-/* ── Preview Card ── */
-.preview-card { }
+/* ── Preview Card ── (inherits .card base styles) */
 
 .preview-header {
   display: flex;
@@ -133,9 +136,6 @@
 }
 
 /* ── Contracts Panel (RIGHT) ── */
-.contracts-panel {
-  /* note: right panel is 360px wide — use single column everywhere */
-}
 
 .cp-header {
   display: flex;
@@ -231,8 +231,7 @@
 .cp-btn--edit:hover { background: rgba(59,130,246,0.15); border-color: var(--primary); }
 .cp-btn--del:hover  { background: rgba(239,68,68,0.15);  border-color: var(--danger); }
 
-/* ── Selected Detail (RIGHT panel) ── */
-.selected-detail { }
+/* ── Selected Detail (RIGHT panel) ── (inherits .card base) */
 
 /* Single-column stats inside narrow sidebar — override global stat grid */
 .sidebar-stats {
@@ -290,11 +289,19 @@
 
 /* lg: 992–1199px — narrower sidebar */
 @media (max-width: 1199px) {
-  :root { --sidebar-w: 320px; }
+  :root { --sidebar-w: 300px; }
 }
 
-/* md: <= 991px — stack vertically */
-@media (max-width: 991px) {
+/* md: 768–991px — tablet: keep 2-column but narrow sidebar */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root { --sidebar-w: 260px; }
+  .kalk-body { grid-template-columns: 1fr 260px; }
+  .kalk-grid { grid-template-columns: 1fr; }
+  .col-span-2 { grid-column: 1; }
+}
+
+/* sm: <= 767px — mobile: single column */
+@media (max-width: 767px) {
   .kalk-body {
     grid-template-columns: 1fr;
   }
@@ -303,10 +310,6 @@
     max-height: none;
     overflow-y: visible;
   }
-}
-
-/* sm/xs: <= 767px — single column form grid */
-@media (max-width: 767px) {
   .kalk-grid { grid-template-columns: 1fr; }
   .col-span-2 { grid-column: 1; }
   .preview-stats { grid-template-columns: 1fr; }

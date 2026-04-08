@@ -180,15 +180,20 @@ tfoot .denda-total-row { background: rgba(239,68,68,0.06); border-top: 1.5px sol
 
 /* ── Responsive ── */
 @media (max-width: 1199px) {
-  .denda-body { grid-template-columns: 1fr 280px; }
+  .denda-body { grid-template-columns: 1fr 260px; }
 }
 
-@media (max-width: 991px) {
+/* md: tablet — stay 2-column */
+@media (min-width: 768px) and (max-width: 991px) {
+  .denda-body { grid-template-columns: 1fr 220px; }
+  .denda-params { grid-template-columns: 1fr; }
+  .denda-params .col-full { grid-column: 1; }
+}
+
+/* sm: mobile — single column */
+@media (max-width: 767px) {
   .denda-body { grid-template-columns: 1fr; }
   .denda-right { position: static; }
-}
-
-@media (max-width: 767px) {
   .denda-params { grid-template-columns: 1fr; }
   .denda-params .col-full { grid-column: 1; }
   .denda-page-title { font-size: var(--text-2xl); }

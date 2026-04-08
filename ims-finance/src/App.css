@@ -227,8 +227,16 @@
 
 /* ── Responsive ── */
 
-/* md <= 991px: tablet — tabs wrap below brand */
+/* md 768–991px: tablet — slightly tighter nav but STILL horizontal */
 @media (max-width: 991px) {
+  .hero-strip { padding: var(--space-8) var(--content-pad-x); }
+  .main-content { padding: var(--space-6) var(--content-pad-x); }
+  .nav-tab { min-width: 110px; padding: var(--space-2) var(--space-3); }
+  .nav-company { display: none; }
+}
+
+/* sm <= 767px: mobile — collapse navbar tabs below brand */
+@media (max-width: 767px) {
   .navbar {
     flex-wrap: wrap;
     height: auto;
@@ -242,25 +250,19 @@
     justify-content: flex-start;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .navbar-tabs::-webkit-scrollbar { display: none; }
 
   .tabs-inner { width: max-content; }
   .navbar-right { display: none; }
+  .brand-tag { display: none; }
 
-  .hero-strip { padding: var(--space-8) var(--content-pad-x); }
-
-  .main-content { padding: var(--space-6) var(--content-pad-x); }
-}
-
-/* sm <= 767px: mobile landscape */
-@media (max-width: 767px) {
-  .nav-tab { min-width: 100px; padding: var(--space-2) var(--space-3); }
-  .nav-tab-label { font-size: 12px; }
   .hero-title { font-size: var(--text-2xl); }
   .hero-orbs { display: none; }
 }
 
-/* xs <= 575px: mobile portrait */
+/* xs <= 575px: small phone */
 @media (max-width: 575px) {
   .nav-tab { min-width: 90px; padding: var(--space-2); }
   .nav-tab-label { font-size: 11px; }

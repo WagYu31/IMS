@@ -118,15 +118,19 @@
 
 /* ── Responsive ── */
 @media (max-width: 1199px) {
-  .jt-body { grid-template-columns: 1fr 280px; }
+  .jt-body { grid-template-columns: 1fr 260px; }
 }
 
-@media (max-width: 991px) {
+/* md: tablet — stay 2-column with narrower sidebar */
+@media (min-width: 768px) and (max-width: 991px) {
+  .jt-body { grid-template-columns: 1fr 220px; }
+  .jt-params { grid-template-columns: 1fr; }
+}
+
+/* sm: mobile — single column */
+@media (max-width: 767px) {
   .jt-body { grid-template-columns: 1fr; }
   .jt-right { position: static; }
-}
-
-@media (max-width: 767px) {
   .jt-params { grid-template-columns: 1fr; }
   .jt-page-title { font-size: var(--text-2xl); }
   .summary-strip { flex-direction: column; }
