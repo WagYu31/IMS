@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import KalkulatorAngsuran from './components/KalkulatorAngsuran';
 import JatuhTempo from './components/JatuhTempo';
 import DendaKeterlambatan from './components/DendaKeterlambatan';
@@ -11,9 +11,31 @@ const TABS = [
 ];
 
 export default function App() {
-  const [activeTab, setActiveTab]   = useState('kalkulator');
-  const [contracts, setContracts]   = useState([]);
-  const [selectedIdx, setSelectedIdx] = useState(null);
+  const [activeTab, setActiveTab] = useState('kalkulator');
+
+  // ── State — loaded from localStorage so data survives refresh ──
+  const [contracts, setContracts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('ims-contracts');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
+
+  const [selectedIdx, setSelectedIdx] = useState(() => {
+    try {
+      const saved = localStorage.getItem('ims-selected');
+      return saved !== null ? JSON.parse(saved) : null;
+    } catch { return null; }
+  });
+
+  // Auto-save to localStorage on every change
+  useEffect(() => {
+    localStorage.setItem('ims-contracts', JSON.stringify(contracts));
+  }, [contracts]);
+
+  useEffect(() => {
+    localStorage.setItem('ims-selected', JSON.stringify(selectedIdx));
+  }, [selectedIdx]);
 
   const handleSaveContract = useCallback((data) => {
     setContracts((prev) => {
