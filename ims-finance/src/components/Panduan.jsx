@@ -126,14 +126,15 @@ function findLocalReply(text, contracts = []) {
     return `📋 **Daftar Kontrak (${contracts.length} data)**\n\n${list}`;
   }
 
-  // 3. Query about specific contract by name or number
+  // 3. Query specific contract by name or number
   for (const c of contracts) {
     const name = c.clientName?.toLowerCase() || '';
     const no   = c.kontrakNo?.toLowerCase()  || '';
     if (lower.includes(name) || lower.includes(no)) {
       const h = c.hasil || {};
       const f = c.form  || {};
-      return `📄 **Kontrak ${c.kontrakNo} — ${c.clientName}**\n\n• OTR: Rp ${Math.round(h.hargaOtr||0).toLocaleString('id-ID')}\n• DP (${f.downPayment}%): Rp ${Math.round(h.downPayment||0).toLocaleString('id-ID')}\n• Pokok: Rp ${Math.round(h.pokokPinjaman||0).toLocaleString('id-ID')}\n• Bunga: Rp ${Math.round(h.totalBunga||0).toLocaleString('id-ID')}\n• **Angsuran: Rp ${Math.round(h.angsuranPerBulan||0).toLocaleString('id-ID')}/bln**\n• Tenor: ${f.tenorBulan} bulan\n• Mulai: ${f.tanggalAngsuranPertama}`;
+      const fmt = (n) => 'Rp ' + Math.round(n||0).toLocaleString('id-ID');
+      return `📄 **Kontrak ${c.kontrakNo} — ${c.clientName}**\n\n• OTR: ${fmt(f.otr)}\n• DP (${f.dpPersen}%): ${fmt(h.dp)}\n• Pokok Pinjaman: ${fmt(h.pokok)}\n• Total Bunga (${f.bungaPerTahun}%/thn): ${fmt(h.bungaTotal)}\n• **Angsuran/Bulan: ${fmt(h.angsuranPerBulan)}** 🎯\n• Total Bayar: ${fmt(h.totalBayar)}\n• Tenor: ${f.tenorBulan} bulan\n• Mulai: ${f.tglMulai}`;
     }
   }
 
@@ -169,7 +170,8 @@ async function getReply(text, history, contracts = []) {
   const contractsContext = contracts.length > 0
     ? '\n\nDATA KONTRAK TERSIMPAN SAAT INI:\n' + contracts.map(c => {
         const h = c.hasil || {}; const f = c.form || {};
-        return `- ${c.kontrakNo} | ${c.clientName} | OTR: ${h.hargaOtr} | DP: ${f.downPayment}% | Tenor: ${f.tenorBulan} bln | Angsuran: Rp ${Math.round(h.angsuranPerBulan||0).toLocaleString('id-ID')}/bln | Mulai: ${f.tanggalAngsuranPertama}`;
+        const fmt = (n) => 'Rp ' + Math.round(n||0).toLocaleString('id-ID');
+        return `- ${c.kontrakNo} | ${c.clientName} | OTR: ${fmt(f.otr)} | DP: ${f.dpPersen}% (${fmt(h.dp)}) | Pokok: ${fmt(h.pokok)} | Bunga: ${fmt(h.bungaTotal)} | Angsuran: ${fmt(h.angsuranPerBulan)}/bln | Tenor: ${f.tenorBulan} bln | Mulai: ${f.tglMulai}`;
       }).join('\n')
     : '';
 
