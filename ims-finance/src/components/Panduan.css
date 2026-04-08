@@ -1,0 +1,169 @@
+/* Panduan — Minimalist Guide Page */
+.panduan-page { display: flex; flex-direction: column; gap: var(--space-8); max-width: 820px; margin: 0 auto; }
+
+/* Hero */
+.panduan-hero {
+  text-align: center;
+  padding: var(--space-10) var(--space-6);
+  background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+}
+.panduan-hero-icon { font-size: 48px; margin-bottom: var(--space-4); }
+.panduan-hero-title {
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-2);
+}
+.panduan-hero-sub { font-size: var(--text-sm); color: var(--text-muted); }
+
+/* Section */
+.panduan-section { display: flex; flex-direction: column; gap: var(--space-4); }
+
+.panduan-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.panduan-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 10px;
+  border-radius: 99px;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.25);
+  color: var(--primary-light);
+}
+
+/* Steps */
+.panduan-steps { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.panduan-step {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-card2);
+  transition: border-color 0.2s, background 0.2s;
+}
+.panduan-step:hover {
+  border-color: var(--border-default);
+  background: var(--surface-hover);
+}
+
+.panduan-step-num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.25);
+  color: var(--primary-light);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.panduan-step-body { flex: 1; }
+.panduan-step-label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.panduan-step-desc { font-size: var(--text-xs); color: var(--text-muted); line-height: 1.6; }
+
+/* Formula card */
+.panduan-formula {
+  background: var(--surface-card2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+.panduan-formula-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+}
+.panduan-formula-rows { display: flex; flex-direction: column; gap: var(--space-2); }
+.panduan-formula-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+}
+.panduan-formula-row-label { color: var(--text-muted); }
+.panduan-formula-row-val {
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: var(--primary-light);
+  font-size: var(--text-xs);
+  background: rgba(59,130,246,0.08);
+  padding: 2px 10px;
+  border-radius: var(--radius-xs);
+}
+
+/* Example table */
+.panduan-example-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.panduan-example-table th {
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-default);
+}
+.panduan-example-table td {
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.panduan-example-table tr:last-child td { border-bottom: none; }
+.panduan-example-table td:last-child { font-weight: 600; color: var(--text-primary); }
+
+/* Note card */
+.panduan-note {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(245,158,11,0.05);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.panduan-note-icon { font-size: 18px; flex-shrink: 0; }
+
+/* Divider */
+.panduan-divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .panduan-hero { padding: var(--space-8) var(--space-4); }
+  .panduan-hero-title { font-size: var(--text-2xl); }
+  .panduan-formula-row { flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+}
