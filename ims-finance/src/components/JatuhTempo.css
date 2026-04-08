@@ -28,8 +28,10 @@
 
 .jt-left  { display: flex; flex-direction: column; gap: var(--space-5); }
 .jt-right {
-  position: sticky;
-  top: calc(var(--navbar-h) + var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-8);
 }
 
 /* Params row */
@@ -123,14 +125,13 @@
 
 /* md: tablet — stay 2-column with narrower sidebar */
 @media (min-width: 768px) and (max-width: 991px) {
-  .jt-body { grid-template-columns: 1fr 220px; }
+  .jt-body { grid-template-columns: 1fr 240px; }
   .jt-params { grid-template-columns: 1fr; }
 }
 
 /* sm: mobile — single column */
 @media (max-width: 767px) {
   .jt-body { grid-template-columns: 1fr; }
-  .jt-right { position: static; }
   .jt-params { grid-template-columns: 1fr; }
   .jt-page-title { font-size: var(--text-2xl); }
   .summary-strip { flex-direction: column; }
@@ -140,4 +141,35 @@
 
 @media (max-width: 575px) {
   .jt-page-title { font-size: var(--text-xl); }
+}
+
+/* ── Detail table fixes ── */
+.jt-right .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.jt-right table {
+  min-width: 240px;
+  width: 100%;
+}
+
+/* Prevent KE column from being too wide */
+.jt-right th:first-child,
+.jt-right td:first-child {
+  width: 36px;
+  text-align: center;
+}
+
+/* Angsuran column */
+.jt-right th:nth-child(2),
+.jt-right td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* Tanggal column — no wrap */
+.jt-right .td-mono,
+.jt-right th:last-child {
+  white-space: nowrap;
+  font-size: var(--text-xs);
 }
