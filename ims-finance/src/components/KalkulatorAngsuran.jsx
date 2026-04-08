@@ -130,18 +130,6 @@ export default function KalkulatorAngsuran({ contracts, selectedIdx, onSelect, o
               </div>
               <div className="form-group">
                 <label className="form-label">Down Payment</label>
-                {/* Preset chips */}
-                <div className="dp-presets">
-                  {DP_PRESETS.map(p => (
-                    <button
-                      key={p}
-                      type="button"
-                      className={`dp-chip${form.dpPersen === p ? ' dp-chip--active' : ''}`}
-                      onClick={() => { setForm(prev => ({ ...prev, dpPersen: p })); setPreview(null); }}
-                    >{p}%</button>
-                  ))}
-                </div>
-                {/* Number input with % suffix */}
                 <div className="input-suffix-wrap">
                   <input
                     className="form-control"
